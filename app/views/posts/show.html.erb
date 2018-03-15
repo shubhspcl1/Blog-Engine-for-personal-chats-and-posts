@@ -1,5 +1,15 @@
 <p id="notice"><%= notice %></p>
+<%= image_tag @post.image.url(:medium) %>
 
+<%= link_to like_post_path(@post), class:"like-btn", method: :put, remote: :true do %>
+
+
+  <span><i style="font-size:24px" class="fa">&#xf087;</i></span>
+
+
+<% end %>
+
+<span class="likes-count"><%= @post.get_upvotes.size %></span>
 <p>
   <strong>Title:</strong>
   <%= @post.title %>
@@ -10,8 +20,23 @@
   <%= @post.description %>
 </p>
 
+ <h5>Add Comment</h5>
+<%= form_for  @comment, remote:true do |f| %>
+	<input type="hidden" name="comment[post_id]" value="<%=@post.id%>">
+	<%= f.label :message %>
+  <%= f.text_field :message %>
+  <%= f.submit %>
+<% end %>
+<h5>Comments</h5>
+<div id="comments-container">
+<% @post.comments.each do |cm| %>
+    <%= render 'comments/comment', comment: cm %>
+<% end %>
+
+</div>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
 
-<!--<h3> commments</h3>-->
-<!--<@postcomments.each do-->
+
+

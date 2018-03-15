@@ -1,0 +1,11 @@
+console.log("javascript rendered");
+
+var commentsContainer = $('#comments-container');
+
+var newComment = $('<%= escape_javascript render "comments/comment", comment: @new_comment%>');
+
+
+commentsContainer.append(newComment);
+
+$('#comment_message').val('');
+

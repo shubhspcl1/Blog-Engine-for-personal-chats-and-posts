@@ -14,14 +14,15 @@
 
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
+      <tr id="post">
         <td><%= post.title %></td>
         <td><%= post.description %></td>
         <td><%= post.user.email %></td>
+        <td><%= image_tag post.image.url(:medium) %></td>
         <td><%= link_to 'Show', post %></td>
         <% if post.user == current_user %>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Destroy', post, method: :delete %></td>
           <% end %>
       </tr>
     <% end %>

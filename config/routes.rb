@@ -7,8 +7,14 @@ Rails.application.routes.draw do
 
   post 'comments/create', as: "comments"
   devise_for :users
-  resources :posts
+
   root to: "posts#index"
+
+  resources :posts do
+    member do
+      put "like" => "posts#vote"
+    end
+  end
 
 
 

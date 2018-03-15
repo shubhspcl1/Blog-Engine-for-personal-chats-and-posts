@@ -3,9 +3,12 @@
   <head>
     <title>Blogengine</title>
     <%= csrf_meta_tags %>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'noty' %>
+    <%= stylesheet_link_tag 'themes/relax' %>
+
   </head>
 
   <body>
@@ -22,5 +25,6 @@
     <%= link_to "log out", destroy_user_session_path , method: :delete%>
   </div>
   <%= yield %>
+  <%= javascript_include_tag "noty.min" %>
   </body>
 </html>

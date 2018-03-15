@@ -1,0 +1,10 @@
+console.log('destroy called');
+
+$('#post<%= @post_id %>').remove();
+
+new Noty({
+    theme: 'relax',
+    text: 'Post Deleted',
+    type: 'warning',
+    layout: 'topRight'
+}).show();
